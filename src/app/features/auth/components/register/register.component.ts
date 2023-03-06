@@ -28,6 +28,7 @@ export class RegisterComponent {
     private sessionService: SessionService) { }
 
   public submit(): void {
+    localStorage.removeItem('token');
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.register(registerRequest).subscribe(
       (response: AuthSuccess) => {

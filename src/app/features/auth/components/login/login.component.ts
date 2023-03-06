@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
 import { SessionService } from 'src/app/services/session.service';
 import { AuthSuccess } from '../../interfaces/authSuccess.interface';
-import { LoginRequest } from '../../interfaces/loginRequest.interface'; 
+import { LoginRequest } from '../../interfaces/loginRequest.interface';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -21,12 +21,13 @@ export class LoginComponent  {
     password: ['', [Validators.required, Validators.min(3)]]
   });
 
-  constructor(private authService: AuthService, 
-    private fb: FormBuilder, 
+  constructor(private authService: AuthService,
+    private fb: FormBuilder,
     private router: Router,
     private sessionService: SessionService) { }
 
   public submit(): void {
+    localStorage.removeItem('token');
     const loginRequest = this.form.value as LoginRequest;
     this.authService.login(loginRequest).subscribe(
       (response: AuthSuccess) => {
