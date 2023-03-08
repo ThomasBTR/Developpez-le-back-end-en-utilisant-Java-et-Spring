@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SessionService } from 'src/app/services/session.service';
-import { AuthService } from '../../services/auth.service';
-import { RegisterRequest } from '../../interfaces/registerRequest.interface';
-import { AuthSuccess } from '../../interfaces/authSuccess.interface';
-import { User } from 'src/app/interfaces/user.interface';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {SessionService} from 'src/app/services/session.service';
+import {AuthService} from '../../services/auth.service';
+import {RegisterRequest} from '../../interfaces/registerRequest.interface';
+import {AuthSuccess} from '../../interfaces/authSuccess.interface';
+import {User} from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +28,6 @@ export class RegisterComponent {
     private sessionService: SessionService) { }
 
   public submit(): void {
-    localStorage.removeItem('token');
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.register(registerRequest).subscribe(
       (response: AuthSuccess) => {
