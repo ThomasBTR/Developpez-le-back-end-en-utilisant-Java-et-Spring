@@ -33,7 +33,6 @@ export class LoginComponent  {
         localStorage.setItem('token', response.token);
         this.authService.me().subscribe((user: User) => {
           this.sessionService.logIn(user);
-          localStorage.removeItem('token');
           this.router.navigate(['/rentals'])
         });
         this.router.navigate(['/rentals'])
